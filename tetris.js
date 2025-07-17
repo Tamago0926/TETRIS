@@ -4,8 +4,9 @@ let tiles;
 let sub_tile;
 let Directions = 0;
 let zKeyPressed = false;
-let xKeyPressed = false; // 正しく初期化
+let xKeyPressed = false;
 let isDropping = false;
+let ArrowUpPressed = false; 
 let lotate_x = 3;
 let lotate_y = 0;
 let mino_type = [];
@@ -741,7 +742,9 @@ function handleKeyDown(event) {
     }
   }
 
-  if (event.key === "ArrowUp") {
+  if ((event.key === "ArrowUp") && !ArrowUpPressed) {
+
+    ArrowUpPressed = true;
     let D_rock;
 
     for (let i = 0; i < 20; i++){
@@ -816,6 +819,8 @@ function handleKeyUp(event) {
     zKeyPressed = false;
   } else if (event.key === "x" || event.key === "X") {
     xKeyPressed = false;
+  } else if (event.key === "ArrowUp") {
+    ArrowUpPressed = false;
   }
 }
 
